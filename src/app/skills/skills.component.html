@@ -1,0 +1,95 @@
+<section class="rounded-lg bg-white shadow-lg pt-4 mb-4 mx-2 sm:mx-6 relative">
+  <h2 class="font-semibold text-2xl pt-2 pb-3 w-full text-center">
+    Skills y Tecnologías
+  </h2>
+  <!-- ------------------------ -->
+  <!--        lenguajes        -->
+  <!-- ------------------------ -->
+
+  <div
+    class="items-center flex flex-col bg-cyan-700 w-full rounded-b-lg shadow-lg mt-2 mx-auto p-4 pb-6 text-white"
+  >
+    <h3 class="text-xl font-semibold text-center mb-5">Lenguajes</h3>
+
+    <div class="flex gap-5 flex-wrap justify-center">
+      <!-- mini card redonda con las skills-->
+      <div
+        class="span-hide-show w-20 h-20 p-1 rounded-full relative flex items-center justify-center"
+        *ngFor="let skill of skills"
+      >
+        <!-- imagen de skill -->
+        <img class="drop-shadow-lg" [src]="skill.imgUrl" alt="" />
+        <!-- span con nombre de skill -->
+        <span
+          class="absolute text-white min-w-full px-3 bg-slate-800 rounded-lg text-center"
+          >{{ skill.name }}</span
+        >
+        <!-- boton de delete -->
+        <button
+          class="absolute bg-red-600 -top-1 -right-1 w-7 h-7 text-white rounded-full"
+        >
+          <i class="bx bxs-trash"></i>
+        </button>
+
+        <!-- boton de edit -->
+        <button
+          class="absolute bg-green-600 -top-1 -left-1 w-7 h-7 text-white rounded-full"
+        >
+          <i class="bx bxs-edit"></i>
+        </button>
+      </div>
+
+      <!-- boton para añadir mas skills -->
+      <button
+        class="w-20 h-20 p-1 rounded-full bg-slate-300 relative flex items-center justify-center"
+      >
+        <div class="absolute block w-16 h-2 bg-[#00D01A] rounded-lg"></div>
+        <div class="absolute block w-2 h-16 bg-[#00D01A] rounded-lg"></div>
+      </button>
+    </div>
+
+    <!-- ------------------------ -->
+    <!--        frameworks        -->
+    <!-- ------------------------ -->
+
+    <h3 class="text-xl font-semibold text-center my-5">Frameworks</h3>
+
+    <div class="flex gap-5 flex-wrap justify-center">
+      <!-- mini card redonda con las Frameworks-->
+      <div
+        class="span-hide-show w-20 h-20 p-1 rounded-full relative flex items-center justify-center"
+        *ngFor="let framework of frameworks"
+      >
+        <!-- imagen de framework -->
+        <img class="drop-shadow-lg" [src]="framework.imgUrl" alt="" />
+        <!-- span con nombre de framework -->
+        <span
+          class="absolute text-white min-w-full px-3 bg-slate-800 rounded-lg text-center"
+          >{{ framework.name }}</span
+        >
+
+        <!-- boton de delete -->
+        <button
+          class="absolute bg-red-600 -top-1 -right-1 w-7 h-7 text-white rounded-full"
+        >
+          <i class="bx bxs-trash"></i>
+        </button>
+
+        <!-- boton de edit -->
+        <button
+          class="absolute bg-green-600 -top-1 -left-1 w-7 h-7 text-white rounded-full"
+        >
+          <i class="bx bxs-edit"></i>
+        </button>
+      </div>
+
+      <!-- boton para añadir mas frameworks -->
+      <button
+        class="w-20 h-20 p-1 rounded-full bg-slate-300 relative flex items-center justify-center"
+      >
+        <div class="absolute block w-16 h-2 bg-[#00D01A] rounded-lg"></div>
+        <div class="absolute block w-2 h-16 bg-[#00D01A] rounded-lg"></div>
+      </button>
+    </div>
+  </div>
+</section>

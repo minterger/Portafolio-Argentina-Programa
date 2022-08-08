@@ -1,0 +1,7 @@
+.span-hide-show:hover span {
+  @apply -top-7 visible opacity-100 transition-all;
+}
+
+.span-hide-show span {
+  @apply -top-3 invisible opacity-0 transition-all;
+}
