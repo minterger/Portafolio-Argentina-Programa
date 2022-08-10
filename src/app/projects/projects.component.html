@@ -1,6 +1,6 @@
 <section
   id="proyectos"
-  class="rounded-lg bg-white shadow-lg pt-4 mb-4 mx-2 sm:mx-6 relative"
+  class="rounded-lg bg-slate-800 shadow-lg pt-4 mb-4 mx-2 sm:mx-6 relative"
 >
   <h2 class="font-semibold text-2xl pt-2 pb-3 w-full text-center">Proyectos</h2>
   <!-- ------------------------ -->
@@ -8,8 +8,86 @@
   <!-- ------------------------ -->
 
   <div
-    class="items-center flex flex-col bg-cyan-700 w-full rounded-b-lg shadow-lg mt-2 mx-auto p-4 pb-6 text-white"
+    class="flex items-center flex-row md:flex-col flex-wrap bg-cyan-900 w-full rounded-b-lg shadow-lg mt-2 mx-auto p-4 gap-3 text-white"
   >
-    asd
+    <div
+      *ngFor="let number of ['', '', '', '', '']"
+      class="md:max-w-4xl items-center flex md:flex-row flex-col shadow-lg bg-slate-800 p-2 rounded-lg text-white"
+    >
+      <!-- class="md:max-w-4xl items-center flex md:flex-row flex-col shadow-lg bg-white p-2 rounded-lg text-slate-700" -->
+      <img
+        src="http://res.cloudinary.com/minterger/image/upload/v1660011696/upload-img-app/wsuofifgvaftuzpzxrmy.png"
+        class="w-72 h-44 object-cover rounded-lg md:mr-4"
+        alt=""
+      />
+      <div class="flex flex-col justify-between">
+        <div>
+          <h4 class="text-xl font-semibold text-center md:text-left">
+            Project name
+          </h4>
+          <p class="mt-2 text-center md:text-left">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae
+            alias, laboriosam illum nostrum quaerat laborum, debitis mollitia
+            rem incidunt neque ab, reiciendis tempore expedita?
+          </p>
+          <ul class="flex flex-wrap mt-2 gap-4 justify-center md:justify-start">
+            <li class="text-slate-300 font-medium">
+              <i
+                class="bx bx-check-circle text-yellow-500 align-middle text-xl"
+              ></i>
+              java
+            </li>
+            <li class="text-slate-300 font-medium">
+              <i
+                class="bx bx-check-circle text-yellow-500 align-middle text-xl"
+              ></i>
+              java
+            </li>
+            <li class="text-slate-300 font-medium">
+              <i
+                class="bx bx-check-circle text-yellow-500 align-middle text-xl"
+              ></i>
+              java
+            </li>
+            <li class="text-slate-300 font-medium">
+              <i
+                class="bx bx-check-circle text-yellow-500 align-middle text-xl"
+              ></i>
+              java
+            </li>
+            <li class="text-slate-300 font-medium">
+              <i
+                class="bx bx-check-circle text-yellow-500 align-middle text-xl"
+              ></i>
+              java
+            </li>
+          </ul>
+        </div>
+
+        <div class="w-full flex justify-center md:justify-end px-2 py-2">
+          <a
+            href=""
+            class="bg-red-600 flex items-center text-slate-50 px-2 py-1 rounded-md mr-2"
+          >
+            <i class="bx bx-trash"></i>
+          </a>
+          <a
+            href=""
+            class="bg-green-600 flex items-center text-slate-50 px-2 py-1 rounded-md mr-2"
+          >
+            <i class="bx bxs-edit"></i>
+          </a>
+          <a
+            href=""
+            class="bg-slate-700 text-slate-50 px-2 py-1 rounded-md mr-2"
+          >
+            GitHub
+          </a>
+          <a href="" class="bg-slate-700 text-slate-50 px-2 py-1 rounded-md">
+            Link
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
