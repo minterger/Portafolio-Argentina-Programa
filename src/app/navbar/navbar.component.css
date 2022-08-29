@@ -2,21 +2,45 @@
   .border-bottom {
     @apply pr-1;
     position: relative;
-    transition: all 0.2s ease-in-out;
   }
   .border-bottom::after {
     @apply bg-slate-500 rounded-full;
     content: "";
     position: absolute;
-    bottom: -5px;
+    bottom: -2px;
     right: 0;
     margin: 0 auto;
     width: 0;
     left: 0;
     height: 2px;
-    transition: all 0.2s ease-in-out;
+    animation: slideWidthHide 0.1s;
   }
   .border-bottom:hover::after {
+    animation: slideWidthShow 0.3s;
+    width: 100%;
+  }
+}
+
+@keyframes slideWidthHide {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+
+@keyframes slideWidthShow {
+  0% {
+    width: 0;
+  }
+  25% {
+    width: 15%;
+  }
+  50% {
+    width: 60%;
+  }
+  100% {
     width: 100%;
   }
 }
