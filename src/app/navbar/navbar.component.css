@@ -2,7 +2,7 @@
   .border-bottom {
     @apply pr-1;
     position: relative;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
   .border-bottom::after {
     @apply bg-slate-500 rounded-full;
@@ -14,7 +14,7 @@
     width: 0;
     left: 0;
     height: 2px;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
   .border-bottom:hover::after {
     width: 100%;
