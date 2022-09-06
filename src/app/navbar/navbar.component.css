@@ -4,16 +4,16 @@
     position: relative;
   }
   .border-bottom::after {
-    @apply bg-slate-500 rounded-full;
     content: "";
+    width: 0;
     position: absolute;
     bottom: -2px;
     right: 0;
     margin: 0 auto;
-    width: 0;
     left: 0;
     height: 2px;
     animation: slideWidthHide 0.1s;
+    @apply bg-slate-500 rounded-full;
   }
   .border-bottom:hover::after {
     animation: slideWidthShow 0.3s;

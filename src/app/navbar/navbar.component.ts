@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Route, Router} from '@angular/router'
 
 @Component({
   selector: 'app-navbar',
@@ -9,11 +10,15 @@ export class NavbarComponent implements OnInit {
 
   menu:boolean = false;
 
-  constructor() { 
+  constructor(private router:Router) { 
   }
 
-  toggleMenu(){
+  toggleMenu():void {
     this.menu = !this.menu;
+  }
+
+  routeToHash(hash:string):void {
+    this.router.navigateByUrl('#' + hash)
   }
   
   ngOnInit(): void {
