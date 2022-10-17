@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-add-project',
-  templateUrl: './add-project.component.html',
-  styleUrls: ['./add-project.component.css'],
+  selector: 'app-add-edit-project',
+  templateUrl: './add-edit-project.component.html',
+  styleUrls: ['./add-edit-project.component.css'],
 })
-export class AddProjectComponent implements OnInit {
+export class AddEditProjectComponent implements OnInit {
+  id: number = 0;
+
   tecnologia: any = {
     name: '',
   };
@@ -19,7 +22,11 @@ export class AddProjectComponent implements OnInit {
     tecnologias: [],
   };
 
-  constructor() {}
+  constructor(private route: ActivatedRoute) {
+    route.params.subscribe((param) => {
+      this.id = param['id'];
+    });
+  }
 
   addTecnologia() {
     this.project.tecnologias.push(this.tecnologia.name);

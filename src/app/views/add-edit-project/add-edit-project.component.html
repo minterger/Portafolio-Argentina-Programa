@@ -1,8 +1,10 @@
 <div class="flex items-center justify-center mx-2">
   <div
-    class="border mt-10 mb-6 py-3 px-4 bg-slate-900 border-slate-800 rounded-lg w-full max-w-sm"
+    class="border mt-10 mb-6 py-3 px-4 bg-slate-900 border-slate-800 rounded-lg w-full max-w-sm shadow-md"
   >
-    <h2 class="text-xl text-center">Añadir Projecto</h2>
+    <h2 class="text-xl text-center">
+      {{ id ? "Editar Proyecto" : "Añadir Proyecto" }}
+    </h2>
     <hr class="border-slate-800 mt-3 mb-2" />
     <form action="" (ngSubmit)="addProject()">
       <label class="asd" for="">Nombre:</label>
@@ -60,7 +62,7 @@
       <p class="mb-1">
         <span
           *ngFor="let tecnologia of project.tecnologias; index as i"
-          class="cursor-pointer"
+          class="cursor-pointer hover:text-slate-400 no-underline hover:underline decoration-dashed underline-offset-4 transition-colors"
           (click)="deleteTecnologia(i)"
         >
           <i
@@ -74,7 +76,7 @@
         class="mt-4 px-4 py-2 bg-blue-800 rounded-lg mx-auto"
         type="submit"
       >
-        Añadir Proyecto
+        {{ id ? "Editar Proyecto" : "Añadir Proyecto" }}
       </button>
     </form>
   </div>

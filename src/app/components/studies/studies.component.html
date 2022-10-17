@@ -10,6 +10,27 @@
   <div
     class="flex items-center flex-row md:flex-col flex-wrap bg-blue-900 w-full rounded-b-lg shadow-lg mt-2 mx-auto p-4 gap-3 text-white"
   >
-    asdasdasdasd
+    <a routerLink="add/studie" class="px-3 py-2 rounded-md bg-green-700"
+      >Añadir Estudios</a
+    >
+
+    <div
+      *ngFor="let i of [0, 0, 0, 0]"
+      class="flex items-center w-full max-w-3xl bg-slate-900 p-3 rounded-md shadow-md"
+    >
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRocCOcFlsip-jJhqLG81rcKOVElZ7DW4nDV5UPaqbG&s"
+        class="rounded-full object-cover h-20 w-20 mr-6"
+      />
+      <div class="">
+        <h2 class="text-xl font-semibold mb-1">Escuela o Instituto</h2>
+        <p class="text-sm">
+          <span class="font-semibold">Titulo:</span> Developer FullStack
+        </p>
+        <p class="text-sm">
+          <span class="font-semibold">Modalidad:</span> Virtual
+        </p>
+      </div>
+    </div>
   </div>
 </section>

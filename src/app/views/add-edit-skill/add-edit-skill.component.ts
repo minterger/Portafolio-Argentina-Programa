@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-add-skill',
-  templateUrl: './add-skill.component.html',
-  styleUrls: ['./add-skill.component.css'],
+  selector: 'app-add-edit-skill',
+  templateUrl: './add-edit-skill.component.html',
+  styleUrls: ['./add-edit-skill.component.css'],
 })
-export class AddSkillComponent implements OnInit {
+export class AddEditSkillComponent implements OnInit {
   type: String = '';
+  id: number = 0;
 
   skill: any = {
     name: '',
@@ -17,6 +18,7 @@ export class AddSkillComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) {
     route.params.subscribe((param) => {
       this.type = param['type'];
+      this.id = param['id'];
     });
   }
 

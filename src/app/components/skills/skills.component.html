@@ -18,18 +18,18 @@
       <!-- mini card redonda con las skills-->
       <div
         class="span-hide-show w-20 h-20 p-1 rounded-full bg-slate-900 relative flex items-center justify-center"
-        *ngFor="let skill of skills"
+        *ngFor="let lenguaje of lenguajes"
       >
         <!-- imagen de skill -->
         <img
           class="drop-shadow-lg overflow-hidden rounded-full"
-          [src]="skill.imgUrl"
+          [src]="lenguaje.imgUrl"
           alt=""
         />
-        <!-- span con nombre de skill -->
+        <!-- span con nombre de lenguaje -->
         <span
           class="absolute text-white min-w-full px-3 bg-slate-900 rounded-lg text-center"
-          >{{ skill.name }}</span
+          >{{ lenguaje.name }}</span
         >
         <!-- boton de delete -->
         <button
@@ -40,19 +40,19 @@
         </button>
 
         <!-- boton de edit -->
-        <button
-          name="Editar"
+        <a
+          [routerLink]="'/edit/skill/lenguaje/' + lenguaje.id"
           class="absolute bg-green-600 -top-1 -left-1 w-7 h-7 text-white rounded-full flex items-center justify-center"
         >
           <i class="bx bxs-edit"></i>
-        </button>
+        </a>
       </div>
 
       <!-- boton para añadir mas skills -->
       <a
         name="Añadir skill"
         routerLink="add/skill/lenguaje"
-        class="w-20 h-20 p-1 rounded-full bg-slate-800 relative flex items-center justify-center"
+        class="w-20 h-20 p-1 rounded-full bg-slate-900 relative flex items-center justify-center"
       >
         <div class="absolute block w-14 h-2 bg-[#00D01A] rounded-lg"></div>
         <div class="absolute block w-2 h-14 bg-[#00D01A] rounded-lg"></div>
@@ -92,19 +92,20 @@
         </button>
 
         <!-- boton de edit -->
-        <button
+        <a
+          [routerLink]="'/edit/skill/framework/' + framework.id"
           name="Editar"
           class="absolute bg-green-600 -top-1 -left-1 w-7 h-7 text-white rounded-full flex items-center justify-center"
         >
           <i class="bx bxs-edit"></i>
-        </button>
+        </a>
       </div>
 
       <!-- boton para añadir mas frameworks -->
       <a
         name="Añadir framework"
         routerLink="add/skill/framework"
-        class="w-20 h-20 p-1 rounded-full bg-slate-800 relative flex items-center justify-center"
+        class="w-20 h-20 p-1 rounded-full bg-slate-900 relative flex items-center justify-center"
       >
         <div class="absolute block w-14 h-2 bg-[#00D01A] rounded-lg"></div>
         <div class="absolute block w-2 h-14 bg-[#00D01A] rounded-lg"></div>

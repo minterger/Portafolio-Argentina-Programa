@@ -1,8 +1,10 @@
 <div class="flex items-center justify-center mx-2">
   <div
-    class="border mt-10 mb-6 py-3 px-4 bg-slate-900 border-slate-800 rounded-lg w-full max-w-sm"
+    class="border mt-10 mb-6 py-3 px-4 bg-slate-900 border-slate-800 rounded-lg w-full max-w-sm shadow-md"
   >
-    <h2 class="text-xl text-center">Añadir Skill</h2>
+    <h2 class="text-xl text-center">
+      {{ id ? "Editar Skill" : "Añadir Skill" }}
+    </h2>
     <hr class="border-slate-800 mt-3 mb-2" />
     <form action="" (ngSubmit)="addSkill()">
       <label class="asd" for="">Nombre:</label>
@@ -25,7 +27,7 @@
         class="mt-4 px-4 py-2 bg-blue-800 rounded-lg mx-auto"
         type="submit"
       >
-        Añadir Skill
+        {{ id ? "Editar Skill" : "Añadir Skill" }}
       </button>
     </form>
   </div>

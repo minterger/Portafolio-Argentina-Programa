@@ -12,8 +12,9 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
 import { StudiesComponent } from './components/studies/studies.component';
-import { AddSkillComponent } from './views/add-skill/add-skill.component';
-import { AddProjectComponent } from './views/add-project/add-project.component';
+import { AddEditSkillComponent } from './views/add-edit-skill/add-edit-skill.component';
+import { AddEditProjectComponent } from './views/add-edit-project/add-edit-project.component';
+import { AddEditStudiesComponent } from './views/add-edit-studies/add-edit-studies.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +27,9 @@ import { AddProjectComponent } from './views/add-project/add-project.component';
     HomeComponent,
     LoginComponent,
     StudiesComponent,
-    AddSkillComponent,
-    AddProjectComponent,
+    AddEditSkillComponent,
+    AddEditProjectComponent,
+    AddEditStudiesComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

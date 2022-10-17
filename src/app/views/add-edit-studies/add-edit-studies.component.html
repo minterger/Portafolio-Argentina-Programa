@@ -1,0 +1,48 @@
+<div class="flex items-center justify-center mx-2">
+  <div
+    class="border mt-10 mb-6 py-3 px-4 bg-slate-900 border-slate-800 rounded-lg w-full max-w-sm shadow-md"
+  >
+    <h2 class="text-xl text-center">
+      {{ id ? "Editar Estudio" : "Añadir Estudio" }}
+    </h2>
+    <hr class="border-slate-800 mt-3 mb-2" />
+    <form action="" (ngSubmit)="addStudie()">
+      <label class="asd" for="">Nombre:</label>
+      <input
+        [(ngModel)]="studie.name"
+        class="block w-full bg-slate-800 text-white px-2 py-2 rounded-lg mb-2"
+        type="text"
+        name="name"
+      />
+
+      <label class="" for="">Imagen Url:</label>
+      <input
+        [(ngModel)]="studie.imgUrl"
+        class="block w-full bg-slate-800 text-white px-2 py-2 rounded-lg mb-2"
+        type="text"
+        name="imgUrl"
+      />
+      <label class="" for="">Titulo:</label>
+      <input
+        [(ngModel)]="studie.titulo"
+        class="block w-full bg-slate-800 text-white px-2 py-2 rounded-lg mb-2"
+        type="text"
+        name="titulo"
+      />
+      <label class="" for="">Modalidad:</label>
+      <input
+        [(ngModel)]="studie.modalidad"
+        class="block w-full bg-slate-800 text-white px-2 py-2 rounded-lg mb-2"
+        type="text"
+        name="modalidad"
+      />
+
+      <button
+        class="mt-4 px-4 py-2 bg-blue-800 rounded-lg mx-auto"
+        type="submit"
+      >
+        {{ id ? "Editar Estudio" : "Añadir Estudio" }}
+      </button>
+    </form>
+  </div>
+</div>
