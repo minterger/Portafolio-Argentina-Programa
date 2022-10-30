@@ -10,31 +10,26 @@ export class SkillsComponent implements OnInit {
     {
       id: 12312123,
       name: 'HTML',
-      level: '80%',
       imgUrl: 'assets/img/html.png',
     },
     {
       id: 12312123,
       name: 'CSS',
-      level: '80%',
       imgUrl: 'assets/img/css.png',
     },
     {
       id: 12312123,
       name: 'JavaScript',
-      level: '80%',
       imgUrl: 'assets/img/javascript.png',
     },
     {
       id: 12312123,
       name: 'TypeScript',
-      level: '80%',
       imgUrl: 'assets/img/typescript.png',
     },
     {
       id: 12312123,
       name: 'Java',
-      level: '80%',
       imgUrl: 'assets/img/java.png',
     },
   ];
@@ -43,31 +38,26 @@ export class SkillsComponent implements OnInit {
     {
       id: 12312123,
       name: 'HTML',
-      level: '80%',
       imgUrl: 'assets/img/html.png',
     },
     {
       id: 12312123,
       name: 'CSS',
-      level: '80%',
       imgUrl: 'assets/img/css.png',
     },
     {
       id: 12312123,
       name: 'JavaScript',
-      level: '80%',
       imgUrl: 'assets/img/javascript.png',
     },
     {
       id: 12312123,
       name: 'TypeScript',
-      level: '80%',
       imgUrl: 'assets/img/typescript.png',
     },
     {
       id: 12312123,
       name: 'Java',
-      level: '80%',
       imgUrl: 'assets/img/java.png',
     },
   ];
