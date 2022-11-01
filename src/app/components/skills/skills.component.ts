@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Skill } from 'src/app/class/skill';
+import { SkillsService } from 'src/app/services/skills.service';
 
 @Component({
   selector: 'app-skills',
@@ -6,63 +8,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./skills.component.css'],
 })
 export class SkillsComponent implements OnInit {
-  lenguajes: Array<any> = [
-    {
-      id: 12312123,
-      name: 'HTML',
-      imgUrl: 'assets/img/html.png',
-    },
-    {
-      id: 12312123,
-      name: 'CSS',
-      imgUrl: 'assets/img/css.png',
-    },
-    {
-      id: 12312123,
-      name: 'JavaScript',
-      imgUrl: 'assets/img/javascript.png',
-    },
-    {
-      id: 12312123,
-      name: 'TypeScript',
-      imgUrl: 'assets/img/typescript.png',
-    },
-    {
-      id: 12312123,
-      name: 'Java',
-      imgUrl: 'assets/img/java.png',
-    },
-  ];
+  lenguajes: Array<Skill> = [];
 
-  frameworks: Array<any> = [
-    {
-      id: 12312123,
-      name: 'HTML',
-      imgUrl: 'assets/img/html.png',
-    },
-    {
-      id: 12312123,
-      name: 'CSS',
-      imgUrl: 'assets/img/css.png',
-    },
-    {
-      id: 12312123,
-      name: 'JavaScript',
-      imgUrl: 'assets/img/javascript.png',
-    },
-    {
-      id: 12312123,
-      name: 'TypeScript',
-      imgUrl: 'assets/img/typescript.png',
-    },
-    {
-      id: 12312123,
-      name: 'Java',
-      imgUrl: 'assets/img/java.png',
-    },
-  ];
+  frameworks: Array<Skill> = [];
 
-  constructor() {}
+  constructor(private skillsService: SkillsService) {}
 
-  ngOnInit(): void {}
+  obtenerSkills() {
+    this.skillsService
+      .getListSkillFramework()
+      .subscribe((frameworks) => (this.frameworks = frameworks));
+    this.skillsService
+      .getListSkillLenguaje()
+      .subscribe((lenguajes) => (this.lenguajes = lenguajes));
+  }
+
+  deleteSkill(id: number) {
+    this.skillsService.deleteSkill(id).subscribe(() => {this.obtenerSkills();});
+
+  }
+
+  ngOnInit(): void {
+    this.obtenerSkills()
+  }
 }

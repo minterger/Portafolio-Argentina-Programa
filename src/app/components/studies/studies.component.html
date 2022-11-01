@@ -15,20 +15,33 @@
     >
 
     <div
-      *ngFor="let i of [0, 0, 0, 0]"
-      class="flex items-center w-full max-w-3xl bg-slate-900 p-3 rounded-md shadow-md"
+      *ngFor="let study of studies"
+      class="flex items-center w-full max-w-3xl bg-slate-900 p-3 rounded-md shadow-md relative"
     >
+      <div class="absolute top-2 right-2 flex gap-2">
+        <a
+          [routerLink]="'/edit/studie/' + study.id"
+          class="w-7 h-7 bg-green-600 text-white rounded-full flex items-center justify-center"
+          ><i class="bx bxs-edit"></i
+        ></a>
+        <button
+          class="w-7 h-7 bg-red-600 text-white rounded-full flex items-center justify-center"
+          (click)="deleteStudy(study.id)"
+        >
+          <i class="bx bxs-trash"></i>
+        </button>
+      </div>
       <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRocCOcFlsip-jJhqLG81rcKOVElZ7DW4nDV5UPaqbG&s"
+        [src]="study.imgUrl"
         class="rounded-full object-cover h-20 w-20 mr-6"
       />
       <div class="">
-        <h2 class="text-xl font-semibold mb-1">Escuela o Instituto</h2>
+        <h2 class="text-xl font-semibold mb-1">{{ study.name }}</h2>
         <p class="text-sm">
-          <span class="font-semibold">Titulo:</span> Developer FullStack
+          <span class="font-semibold">Titulo:</span> {{ study.title }}
         </p>
         <p class="text-sm">
-          <span class="font-semibold">Modalidad:</span> Virtual
+          <span class="font-semibold">Modalidad:</span> {{ study.modality }}
         </p>
       </div>
     </div>

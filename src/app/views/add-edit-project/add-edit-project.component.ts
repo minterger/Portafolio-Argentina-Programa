@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Project } from 'src/app/class/project';
+import { ProjectsService } from 'src/app/services/projects.service';
 
 @Component({
   selector: 'app-add-edit-project',
@@ -9,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class AddEditProjectComponent implements OnInit {
   id: number = 0;
 
-  tecnologia: any = {
+  tecnology: any = {
     name: '',
   };
 
@@ -19,25 +21,39 @@ export class AddEditProjectComponent implements OnInit {
     description: '',
     linkProject: '',
     linkGithub: '',
-    tecnologias: [],
+    tecnologies: [],
   };
 
-  constructor(private route: ActivatedRoute) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private projectService: ProjectsService
+  ) {
     route.params.subscribe((param) => {
       this.id = param['id'];
     });
   }
 
-  addTecnologia() {
-    this.project.tecnologias.push(this.tecnologia.name);
+  addTecnology() {
+    this.project.tecnologies.push({...this.tecnology});
+    this.tecnology.name = ""
+    
   }
 
-  deleteTecnologia(i: number) {
-    this.project.tecnologias.splice(i, 1);
+  deleteTecnology(i: number) {
+    this.project.tecnologies.splice(i, 1);
   }
 
   addProject() {
-    console.log(this.project);
+    this.projectService.addProject(this.project).subscribe(
+      (project) => {
+        this.router.navigate(['']);
+        console.log(project);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   ngOnInit(): void {}
