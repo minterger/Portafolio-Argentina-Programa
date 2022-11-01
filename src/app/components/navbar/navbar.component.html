@@ -1,0 +1,97 @@
+<nav
+  class="flex z-50 justify-between items-center my-4 py-3 px-4 bg-slate-900 border border-slate-800 rounded-lg shadow-md mx-2 sm:mx-6"
+>
+  <a routerLink="/" class="font-bold text-slate-200 md:ml-4"
+    ><img src="../../assets/img/APLogo.png" class="h-7" alt=""
+  /></a>
+
+  <button class="block md:hidden" (click)="toggleMenu()">
+    <i class="bx bx-menu text-xl scale-125 text-slate-200"></i>
+  </button>
+
+  <ul
+    class="md:flex fixed md:static md:opacity-100 md:translate-x-0 z-50 bg-slate-900 border md:border-none border-slate-800 md:bg-transparent flex-col md:flex-row right-0 top-0 bottom-0 w-56 md:w-auto transition-all rounded-lg md:rounded-none m-4 mr-2 sm:mr-6 md:mr-0 md:m-auto shadow-md md:shadow-none md:visible"
+    [ngClass]="{
+      'opacity-100 translate-x-0 visible': menu,
+      'opacity-0 translate-x-full invisible': !menu
+    }"
+  >
+    <!-- close button -->
+    <li
+      class="w-full md:hidden p-2 flex justify-end border-b border-slate-700 bg-blue-900 md:bg-transparent rounded-t-lg"
+    >
+      <button
+        class="flex items-center justify-center px-2 py-1 rounded-lg hover:bg-blue-800 transition-colors"
+        (click)="toggleMenu()"
+      >
+        <i class="bx bx-x text-xl scale-125 text-white"></i>
+      </button>
+    </li>
+    <!-- <li class="w-full md:w-auto mr-4 mt-2 md:mt-auto">
+
+      <a href="" class="text-slate-300 px-2 py-1 md:p-0 flex items-center hover:bg-slate-800 md:hover:bg-transparent md:hover:text-slate-300 transition-colors md:bg-transparent"
+        ><i class="bx bxs-home text-xl md:text-slate-400 mr-2"></i> Inicio</a
+      >
+    </li> -->
+
+    <li class="w-full md:w-auto mr-4 mt-2 md:mt-auto">
+      <a
+        routerLink=""
+        class="cursor-pointer border-bottom text-slate-300 px-2 py-1 md:p-0 flex items-center hover:bg-slate-800 md:hover:bg-transparent md:hover:text-slate-300 transition-colors md:bg-transparent"
+        ><i class="bx bxs-home text-xl md:text-slate-400 mr-2"></i> Inicio</a
+      >
+    </li>
+
+    <li class="w-full md:w-auto mr-4 mt-2 md:mt-auto">
+      <a
+        (click)="routeToHash('skills')"
+        class="cursor-pointer border-bottom text-slate-300 px-2 py-1 md:p-0 flex items-center hover:bg-slate-800 md:hover:bg-transparent md:hover:text-slate-300 transition-colors md:bg-transparent"
+        ><i class="bx bxs-notepad text-xl md:text-slate-400 mr-2"></i> Skills</a
+      >
+    </li>
+
+    <li class="w-full md:w-auto mr-4 mt-2 md:mt-auto">
+      <a
+        (click)="routeToHash('proyectos')"
+        class="cursor-pointer border-bottom text-slate-300 px-2 py-1 md:p-0 flex items-center hover:bg-slate-800 md:hover:bg-transparent md:hover:text-slate-300 transition-colors md:bg-transparent"
+        ><i class="bx bxs-briefcase-alt text-xl md:text-slate-400 mr-2"></i>
+        Proyectos</a
+      >
+    </li>
+
+    <li class="w-full md:w-auto mr-4 mt-2 md:mt-auto">
+      <a
+        (click)="routeToHash('estudios')"
+        class="cursor-pointer border-bottom text-slate-300 px-2 py-1 md:p-0 flex items-center hover:bg-slate-800 md:hover:bg-transparent md:hover:text-slate-300 transition-colors md:bg-transparent"
+        ><i class="bx bxs-book-alt text-xl md:text-slate-400 mr-2"></i>
+        Estudios</a
+      >
+    </li>
+
+    <li class="w-full md:w-auto mr-4 mt-2 md:mt-auto">
+      <a
+        href="https://github.com/minterger"
+        class="border-bottom text-slate-300 px-2 py-1 md:p-0 flex items-center hover:bg-slate-800 md:hover:bg-transparent md:hover:text-slate-300 transition-colors md:bg-transparent"
+        target="_blank"
+        ><i class="bx bxl-github text-xl md:text-slate-400 mr-2"></i> GitHub</a
+      >
+    </li>
+
+    <li class="w-full md:w-auto mr-4 mt-2 md:mt-auto">
+      <a
+        href="https://www.linkedin.com/in/leonelmenci/"
+        class="border-bottom text-slate-300 px-2 py-1 md:p-0 flex items-center hover:bg-slate-800 md:hover:bg-transparent md:hover:text-slate-300 transition-colors md:bg-transparent"
+        target="_blank"
+        ><i class="bx bxl-linkedin text-xl md:text-slate-400 mr-2"></i>
+        Linkedin</a
+      >
+    </li>
+    <li class="w-full md:w-auto mr-4 mt-2 md:mt-auto">
+      <a
+        routerLink="login"
+        class="border-bottom text-slate-300 px-2 py-1 md:p-0 flex items-center hover:bg-slate-800 md:hover:bg-transparent md:hover:text-slate-300 transition-colors md:bg-transparent"
+        ><i class="bx bxs-user text-xl md:text-slate-400 mr-2"></i> Login</a
+      >
+    </li>
+  </ul>
+</nav>
