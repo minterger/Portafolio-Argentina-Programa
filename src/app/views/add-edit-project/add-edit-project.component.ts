@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Project } from 'src/app/class/project';
+import { LoginService } from 'src/app/services/login.service';
 import { ProjectsService } from 'src/app/services/projects.service';
 
 @Component({
@@ -10,6 +11,8 @@ import { ProjectsService } from 'src/app/services/projects.service';
 })
 export class AddEditProjectComponent implements OnInit {
   id: number = 0;
+
+  token: string | null = '';
 
   tecnology: any = {
     name: '',
@@ -27,7 +30,8 @@ export class AddEditProjectComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private projectService: ProjectsService
+    private projectService: ProjectsService,
+    public loginService: LoginService
   ) {
     route.params.subscribe((param) => {
       this.id = param['id'];
@@ -35,9 +39,8 @@ export class AddEditProjectComponent implements OnInit {
   }
 
   addTecnology() {
-    this.project.tecnologies.push({...this.tecnology});
-    this.tecnology.name = ""
-    
+    this.project.tecnologies.push({ ...this.tecnology });
+    this.tecnology.name = '';
   }
 
   deleteTecnology(i: number) {
@@ -45,10 +48,20 @@ export class AddEditProjectComponent implements OnInit {
   }
 
   addProject() {
+    if (this.id) {
+      this.projectService.editProject(this.project, this.id).subscribe(
+        (project) => {
+          this.router.navigate(['']);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+      return;
+    }
     this.projectService.addProject(this.project).subscribe(
       (project) => {
         this.router.navigate(['']);
-        console.log(project);
       },
       (error) => {
         console.log(error);
@@ -56,5 +69,14 @@ export class AddEditProjectComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (!this.loginService.token) {
+      this.router.navigate(['']);
+    }
+    if (this.id) {
+      this.projectService.getProject(this.id).subscribe((project) => {
+        this.project = project;
+      });
+    }
+  }
 }

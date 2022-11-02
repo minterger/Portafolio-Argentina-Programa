@@ -4,16 +4,21 @@
   >
     <h2 class="text-xl text-center">Login</h2>
     <hr class="border-slate-800 mt-3 mb-2" />
-    <form action="">
+    <div class="bg-red-500/50 p-2 rounded-md" *ngIf="error">{{ error }}</div>
+    <form action="" (ngSubmit)="sendLogin()">
       <label class="" for="">Email:</label>
       <input
+        [(ngModel)]="loginForm.userName"
         class="block w-full bg-slate-800 text-white px-2 py-2 rounded-lg"
+        name="userName"
         type="text"
       />
 
       <label class="" for="">Password</label>
       <input
+        [(ngModel)]="loginForm.password"
         class="block w-full bg-slate-800 text-white px-2 py-2 rounded-lg"
+        name="password"
         type="text"
       />
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 import { SkillsService } from 'src/app/services/skills.service';
 
 @Component({
@@ -10,6 +11,8 @@ import { SkillsService } from 'src/app/services/skills.service';
 export class AddEditSkillComponent implements OnInit {
   id: number = 0;
 
+  token: string | null = '';
+
   skill: any = {
     name: '',
     imgUrl: '',
@@ -19,7 +22,8 @@ export class AddEditSkillComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private skillsService: SkillsService
+    private skillsService: SkillsService,
+    public loginService: LoginService
   ) {
     route.params.subscribe((param) => {
       this.skill.type = param['type'];
@@ -43,6 +47,9 @@ export class AddEditSkillComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!this.loginService.token) {
+      this.router.navigate(['']);
+    }
     if (!(this.skill.type == 'framework' || this.skill.type == 'lenguaje')) {
       this.router.navigateByUrl('');
     }

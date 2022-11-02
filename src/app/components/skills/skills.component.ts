@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Skill } from 'src/app/class/skill';
+import { LoginService } from 'src/app/services/login.service';
 import { SkillsService } from 'src/app/services/skills.service';
 
 @Component({
@@ -12,7 +13,10 @@ export class SkillsComponent implements OnInit {
 
   frameworks: Array<Skill> = [];
 
-  constructor(private skillsService: SkillsService) {}
+  constructor(
+    private skillsService: SkillsService,
+    public loginService: LoginService
+  ) {}
 
   obtenerSkills() {
     this.skillsService
@@ -24,11 +28,12 @@ export class SkillsComponent implements OnInit {
   }
 
   deleteSkill(id: number) {
-    this.skillsService.deleteSkill(id).subscribe(() => {this.obtenerSkills();});
-
+    this.skillsService.deleteSkill(id).subscribe(() => {
+      this.obtenerSkills();
+    });
   }
 
   ngOnInit(): void {
-    this.obtenerSkills()
+    this.obtenerSkills();
   }
 }
