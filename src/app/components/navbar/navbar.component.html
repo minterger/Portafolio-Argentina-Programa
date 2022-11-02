@@ -88,10 +88,18 @@
     </li>
     <li class="w-full md:w-auto mr-4 mt-2 md:mt-auto">
       <a
+        *ngIf="!loginService.token"
         routerLink="login"
         class="border-bottom text-slate-300 px-2 py-1 md:p-0 flex items-center hover:bg-slate-800 md:hover:bg-transparent md:hover:text-slate-300 transition-colors md:bg-transparent"
         ><i class="bx bxs-user text-xl md:text-slate-400 mr-2"></i> Login</a
       >
+      <button
+        *ngIf="loginService.token"
+        (click)="cerrarSesion()"
+        class="border-bottom text-slate-300 px-2 py-1 md:p-0 flex items-center hover:bg-slate-800 md:hover:bg-transparent md:hover:text-slate-300 transition-colors md:bg-transparent"
+      >
+        <i class="bx bxs-user text-xl md:text-slate-400 mr-2"></i> Logout
+      </button>
     </li>
   </ul>
 </nav>

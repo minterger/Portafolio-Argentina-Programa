@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Study } from 'src/app/class/study';
+import { LoginService } from 'src/app/services/login.service';
 import { StudiesService } from 'src/app/services/studies.service';
 
 @Component({
@@ -10,6 +11,8 @@ import { StudiesService } from 'src/app/services/studies.service';
 })
 export class AddEditStudiesComponent implements OnInit {
   id: number = 0;
+
+  token: string | null = '';
 
   studie: Study = {
     name: '',
@@ -21,7 +24,8 @@ export class AddEditStudiesComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private studyService: StudiesService
+    private studyService: StudiesService,
+    public loginService: LoginService
   ) {
     route.params.subscribe((param) => {
       this.id = param['id'];
@@ -39,8 +43,10 @@ export class AddEditStudiesComponent implements OnInit {
       this.router.navigate(['']);
     });
   }
-
   ngOnInit(): void {
+    if (!this.loginService.token) {
+      this.router.navigate(['']);
+    }
     if (this.id) {
       this.studyService.getStudy(this.id).subscribe((data) => {
         this.studie = data;
