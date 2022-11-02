@@ -23,13 +23,8 @@ export class NavbarComponent implements OnInit {
 
   cerrarSesion() {
     this.loginService.logout();
+    this.router.navigate(['/login']);
   }
 
-  getToken() {
-    this.loginService.getToken();
-  }
-
-  ngOnInit(): void {
-    this.getToken();
-  }
+  ngOnInit(): void {}
 }
