@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { AddEditProjectComponent } from './views/add-edit-project/add-edit-project.component';
 import { AddEditSkillComponent } from './views/add-edit-skill/add-edit-skill.component';
 import { AddEditStudiesComponent } from './views/add-edit-studies/add-edit-studies.component';
@@ -48,8 +48,13 @@ const routes: Routes = [
   },
 ];
 
+const routerOptions: ExtraOptions = {
+  scrollPositionRestoration: 'enabled',
+  anchorScrolling: 'enabled',
+};
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, routerOptions)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
