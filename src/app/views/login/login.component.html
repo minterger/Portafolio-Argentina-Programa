@@ -22,8 +22,15 @@
         type="password"
       />
 
+      <div
+        class="mt-4 mb-2 w-full flex justify-center"
+        *ngIf="loginService.loading"
+      >
+        <app-loader></app-loader>
+      </div>
       <button
         class="mt-4 px-4 py-2 bg-blue-800 rounded-lg mx-auto"
+        *ngIf="!loginService.loading"
         type="submit"
       >
         Entrar

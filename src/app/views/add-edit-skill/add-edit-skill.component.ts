@@ -22,7 +22,7 @@ export class AddEditSkillComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private skillsService: SkillsService,
+    public skillsService: SkillsService,
     public loginService: LoginService
   ) {
     route.params.subscribe((param) => {
@@ -32,17 +32,29 @@ export class AddEditSkillComponent implements OnInit {
   }
 
   addSkill() {
+    this.skillsService.loading = true;
     if (this.id) {
-      this.skillsService.editSkill(this.skill, this.id).subscribe(() => {
-        this.router.navigate(['']);
-      });
+      this.skillsService.editSkill(this.skill, this.id).subscribe(
+        () => {
+          this.skillsService.loading = false;
+          this.router.navigate(['']);
+        },
+        (error) => {
+          this.skillsService.loading = false;
+          console.log(error);
+        }
+      );
       return;
     }
     this.skillsService.addSkill(this.skill).subscribe(
       (skill) => {
+        this.skillsService.loading = false;
         this.router.navigate(['']);
       },
-      (error) => console.log(error)
+      (error) => {
+        this.skillsService.loading = false;
+        console.log(error);
+      }
     );
   }
 
@@ -55,9 +67,14 @@ export class AddEditSkillComponent implements OnInit {
     }
 
     if (this.id) {
-      this.skillsService.getById(this.id).subscribe((skill) => {
-        this.skill = skill;
-      });
+      this.skillsService.getById(this.id).subscribe(
+        (skill) => {
+          this.skill = skill;
+        },
+        (error) => {
+          this.loginService.viewError(error.status);
+        }
+      );
     }
   }
 }

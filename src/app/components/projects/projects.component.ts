@@ -12,16 +12,19 @@ export class ProjectsComponent implements OnInit {
   projects: Array<Project> = [];
 
   constructor(
-    private projectService: ProjectsService,
+    public projectService: ProjectsService,
     public loginService: LoginService
   ) {}
 
-  getListProjects() {
+  getListProjects(isDeleting?: boolean) {
+    if (!isDeleting) this.projectService.loading = true;
     this.projectService.getListProject().subscribe(
       (projects) => {
+        this.projectService.loading = false;
         this.projects = projects;
       },
       (error) => {
+        this.projectService.loading = false;
         console.log(error);
       }
     );
@@ -30,7 +33,7 @@ export class ProjectsComponent implements OnInit {
   deleteProject(id: number) {
     this.projectService.deleteProject(id).subscribe(
       () => {
-        this.getListProjects();
+        this.getListProjects(true);
       },
       (error) => {
         console.log(error);

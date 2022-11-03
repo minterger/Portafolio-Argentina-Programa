@@ -15,6 +15,10 @@
     <h3 class="text-xl font-semibold text-center mb-5">Lenguajes</h3>
 
     <div class="flex gap-5 flex-wrap justify-center">
+      <div *ngIf="skillsService.loadinglenguajes">
+        <app-loader></app-loader>
+      </div>
+
       <!-- mini card redonda con las skills-->
       <div
         class="span-hide-show w-20 h-20 p-1 rounded-full bg-slate-900 relative flex items-center justify-center"
@@ -70,6 +74,9 @@
     <h3 class="text-xl font-semibold text-center my-5">Frameworks</h3>
 
     <div class="flex gap-5 flex-wrap justify-center">
+      <div *ngIf="skillsService.loadingFrameworks">
+        <app-loader></app-loader>
+      </div>
       <!-- mini card redonda con las Frameworks-->
       <div
         class="span-hide-show w-20 h-20 p-1 rounded-full bg-slate-900 relative flex items-center justify-center"

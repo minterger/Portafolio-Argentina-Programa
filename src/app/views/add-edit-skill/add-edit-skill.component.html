@@ -22,8 +22,14 @@
         type="text"
         name="imgUrl"
       />
-
+      <div
+        class="mt-4 mb-2 w-full flex justify-center"
+        *ngIf="skillsService.loading"
+      >
+        <app-loader></app-loader>
+      </div>
       <button
+        *ngIf="!skillsService.loading"
         class="mt-4 px-4 py-2 bg-blue-800 rounded-lg mx-auto"
         type="submit"
       >

@@ -10,6 +10,8 @@ import { LoginService } from './login.service';
 export class StudiesService {
   private BaseUrl = 'https://ap-portafolio-backend.herokuapp.com/study';
 
+  loading: boolean = false;
+
   constructor(private http: HttpClient, public loginService: LoginService) {}
 
   getListStudies(): Observable<Study[]> {

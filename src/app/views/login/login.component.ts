@@ -15,15 +15,20 @@ export class LoginComponent implements OnInit {
 
   error: string = '';
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(public loginService: LoginService, private router: Router) {}
 
   sendLogin() {
+    this.loginService.loading = true;
     this.loginService.sendLogin(this.loginForm).subscribe(
       (data) => {
+        this.loginService.loading = false;
+
         this.loginService.setToken(data.token);
         this.router.navigate(['']);
       },
       (error) => {
+        this.loginService.loading = false;
+
         console.log(error);
         this.error = error.error.message;
       }

@@ -13,6 +13,7 @@
       *ngIf="loginService.token"
       >Añadir Estudios</a
     >
+    <div *ngIf="studyService.loading"><app-loader></app-loader></div>
 
     <div
       *ngFor="let study of studies"

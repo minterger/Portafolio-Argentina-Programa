@@ -24,7 +24,7 @@ export class AddEditStudiesComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private studyService: StudiesService,
+    public studyService: StudiesService,
     public loginService: LoginService
   ) {
     route.params.subscribe((param) => {
@@ -33,24 +33,44 @@ export class AddEditStudiesComponent implements OnInit {
   }
 
   addStudie() {
+    this.studyService.loading = true;
     if (this.id) {
-      this.studyService.editStudy(this.studie, this.id).subscribe((data) => {
-        this.router.navigate(['']);
-      });
+      this.studyService.editStudy(this.studie, this.id).subscribe(
+        (data) => {
+          this.studyService.loading = false;
+          this.router.navigate(['']);
+        },
+        (error) => {
+          this.studyService.loading = false;
+          console.log(error);
+        }
+      );
       return;
     }
-    this.studyService.addStudy(this.studie).subscribe((data) => {
-      this.router.navigate(['']);
-    });
+    this.studyService.addStudy(this.studie).subscribe(
+      (data) => {
+        this.studyService.loading = false;
+        this.router.navigate(['']);
+      },
+      (error) => {
+        this.studyService.loading = false;
+        console.log(error);
+      }
+    );
   }
   ngOnInit(): void {
     if (!this.loginService.token) {
       this.router.navigate(['']);
     }
     if (this.id) {
-      this.studyService.getStudy(this.id).subscribe((data) => {
-        this.studie = data;
-      });
+      this.studyService.getStudy(this.id).subscribe(
+        (data) => {
+          this.studie = data;
+        },
+        (error) => {
+          this.loginService.viewError(error.status);
+        }
+      );
     }
   }
 }

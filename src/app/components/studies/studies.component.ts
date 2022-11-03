@@ -12,20 +12,33 @@ export class StudiesComponent implements OnInit {
   studies: Array<any> = [];
 
   constructor(
-    private studyService: StudiesService,
+    public studyService: StudiesService,
     public loginService: LoginService
   ) {}
 
   deleteStudy(id: number) {
-    this.studyService.deleteStudy(id).subscribe((data) => {
-      this.getListStudies();
-    });
+    this.studyService.deleteStudy(id).subscribe(
+      (data) => {
+        this.getListStudies(true);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
-  getListStudies() {
-    this.studyService.getListStudies().subscribe((data) => {
-      this.studies = data;
-    });
+  getListStudies(isDeleting?: boolean) {
+    if (!isDeleting) this.studyService.loading = true;
+    this.studyService.getListStudies().subscribe(
+      (data) => {
+        this.studyService.loading = false;
+        this.studies = data;
+      },
+      (error) => {
+        this.studyService.loading = false;
+        console.log(error);
+      }
+    );
   }
 
   ngOnInit(): void {

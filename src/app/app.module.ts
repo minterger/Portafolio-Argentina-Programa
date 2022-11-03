@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +16,7 @@ import { StudiesComponent } from './components/studies/studies.component';
 import { AddEditSkillComponent } from './views/add-edit-skill/add-edit-skill.component';
 import { AddEditProjectComponent } from './views/add-edit-project/add-edit-project.component';
 import { AddEditStudiesComponent } from './views/add-edit-studies/add-edit-studies.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AddEditStudiesComponent } from './views/add-edit-studies/add-edit-studi
     AddEditSkillComponent,
     AddEditProjectComponent,
     AddEditStudiesComponent,
+    LoaderComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

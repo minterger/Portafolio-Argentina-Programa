@@ -10,6 +10,10 @@ import { LoginService } from './login.service';
 export class SkillsService {
   private BaseUrl = 'https://ap-portafolio-backend.herokuapp.com/skill';
 
+  loading: boolean = false;
+  loadingFrameworks: boolean = false;
+  loadinglenguajes: boolean = false;
+
   constructor(private http: HttpClient, public loginService: LoginService) {}
 
   getListSkillFramework(): Observable<Skill[]> {

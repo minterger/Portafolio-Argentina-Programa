@@ -30,7 +30,7 @@ export class AddEditProjectComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private projectService: ProjectsService,
+    public projectService: ProjectsService,
     public loginService: LoginService
   ) {
     route.params.subscribe((param) => {
@@ -48,12 +48,15 @@ export class AddEditProjectComponent implements OnInit {
   }
 
   addProject() {
+    this.projectService.loading = true;
     if (this.id) {
       this.projectService.editProject(this.project, this.id).subscribe(
         (project) => {
+          this.projectService.loading = false;
           this.router.navigate(['']);
         },
         (error) => {
+          this.projectService.loading = false;
           console.log(error);
         }
       );
@@ -61,9 +64,11 @@ export class AddEditProjectComponent implements OnInit {
     }
     this.projectService.addProject(this.project).subscribe(
       (project) => {
+        this.projectService.loading = false;
         this.router.navigate(['']);
       },
       (error) => {
+        this.projectService.loading = false;
         console.log(error);
       }
     );
@@ -74,9 +79,14 @@ export class AddEditProjectComponent implements OnInit {
       this.router.navigate(['']);
     }
     if (this.id) {
-      this.projectService.getProject(this.id).subscribe((project) => {
-        this.project = project;
-      });
+      this.projectService.getProject(this.id).subscribe(
+        (project) => {
+          this.project = project;
+        },
+        (error) => {
+          this.loginService.viewError(error.status);
+        }
+      );
     }
   }
 }
