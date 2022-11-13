@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Project } from 'src/app/class/project';
+import { Project } from 'src/app/interface/project';
+import { AppService } from 'src/app/services/app.service';
 import { LoginService } from 'src/app/services/login.service';
 import { ProjectsService } from 'src/app/services/projects.service';
 
@@ -14,11 +15,13 @@ export class AddEditProjectComponent implements OnInit {
 
   token: string | null = '';
 
+  messageError = '';
+
   tecnology: any = {
     name: '',
   };
 
-  project: any = {
+  project: Project = {
     name: '',
     imgUrl: '',
     description: '',
@@ -31,7 +34,8 @@ export class AddEditProjectComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public projectService: ProjectsService,
-    public loginService: LoginService
+    public loginService: LoginService,
+    private appService: AppService
   ) {
     route.params.subscribe((param) => {
       this.id = param['id'];
@@ -51,11 +55,12 @@ export class AddEditProjectComponent implements OnInit {
     this.projectService.loading = true;
     if (this.id) {
       this.projectService.editProject(this.project, this.id).subscribe(
-        (project) => {
+        () => {
           this.projectService.loading = false;
           this.router.navigate(['']);
         },
         (error) => {
+          this.loginService.viewError(error.status);
           this.projectService.loading = false;
           console.log(error);
         }
@@ -63,11 +68,12 @@ export class AddEditProjectComponent implements OnInit {
       return;
     }
     this.projectService.addProject(this.project).subscribe(
-      (project) => {
+      () => {
         this.projectService.loading = false;
         this.router.navigate(['']);
       },
       (error) => {
+        this.loginService.viewError(error.status);
         this.projectService.loading = false;
         console.log(error);
       }

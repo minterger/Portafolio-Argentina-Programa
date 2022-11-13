@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Study } from 'src/app/class/study';
+import { Study } from 'src/app/interface/study';
 import { LoginService } from 'src/app/services/login.service';
 import { StudiesService } from 'src/app/services/studies.service';
 
@@ -9,16 +9,16 @@ import { StudiesService } from 'src/app/services/studies.service';
   styleUrls: ['./studies.component.css'],
 })
 export class StudiesComponent implements OnInit {
-  studies: Array<any> = [];
+  studies: Array<Study> = [];
 
   constructor(
     public studyService: StudiesService,
     public loginService: LoginService
   ) {}
 
-  deleteStudy(id: number) {
+  deleteStudy(id?: number) {
     this.studyService.deleteStudy(id).subscribe(
-      (data) => {
+      () => {
         this.getListStudies(true);
       },
       (error) => {

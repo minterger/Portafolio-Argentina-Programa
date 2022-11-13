@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Project } from '../class/project';
+import { Project } from '../interface/project';
 import { LoginService } from './login.service';
 
 @Injectable({
@@ -45,7 +45,7 @@ export class ProjectsService {
     return this.http.put<Project>(this.BaseUrl + '/' + id, project, Options);
   }
 
-  deleteProject(id: number): Observable<[string, boolean]> {
+  deleteProject(id?: number): Observable<[string, boolean]> {
     let Options = {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.loginService.token,

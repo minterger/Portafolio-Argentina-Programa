@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Skill } from 'src/app/class/skill';
+import { Skill } from 'src/app/interface/skill';
 import { LoginService } from 'src/app/services/login.service';
 import { SkillsService } from 'src/app/services/skills.service';
 
@@ -46,7 +46,7 @@ export class SkillsComponent implements OnInit {
     );
   }
 
-  deleteSkill(id: number) {
+  deleteSkill(id?: number) {
     this.skillsService.deleteSkill(id).subscribe(() => {
       this.obtenerSkills(true);
     });

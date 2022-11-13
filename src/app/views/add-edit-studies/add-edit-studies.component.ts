@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Study } from 'src/app/class/study';
+import { Study } from 'src/app/interface/study';
+import { AppService } from 'src/app/services/app.service';
 import { LoginService } from 'src/app/services/login.service';
 import { StudiesService } from 'src/app/services/studies.service';
 
@@ -12,9 +13,11 @@ import { StudiesService } from 'src/app/services/studies.service';
 export class AddEditStudiesComponent implements OnInit {
   id: number = 0;
 
+  messageError = '';
+
   token: string | null = '';
 
-  studie: Study = {
+  study: Study = {
     name: '',
     imgUrl: '',
     title: '',
@@ -25,34 +28,39 @@ export class AddEditStudiesComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public studyService: StudiesService,
-    public loginService: LoginService
+    public loginService: LoginService,
+    private appService: AppService
   ) {
     route.params.subscribe((param) => {
       this.id = param['id'];
     });
   }
 
-  addStudie() {
+  addStudy() {
     this.studyService.loading = true;
     if (this.id) {
-      this.studyService.editStudy(this.studie, this.id).subscribe(
+      this.studyService.editStudy(this.study, this.id).subscribe(
         (data) => {
           this.studyService.loading = false;
           this.router.navigate(['']);
         },
         (error) => {
+          this.loginService.viewError(error.status);
+
           this.studyService.loading = false;
           console.log(error);
         }
       );
       return;
     }
-    this.studyService.addStudy(this.studie).subscribe(
-      (data) => {
+    this.studyService.addStudy(this.study).subscribe(
+      () => {
         this.studyService.loading = false;
         this.router.navigate(['']);
       },
       (error) => {
+        this.loginService.viewError(error.status);
+
         this.studyService.loading = false;
         console.log(error);
       }
@@ -65,7 +73,7 @@ export class AddEditStudiesComponent implements OnInit {
     if (this.id) {
       this.studyService.getStudy(this.id).subscribe(
         (data) => {
-          this.studie = data;
+          this.study = data;
         },
         (error) => {
           this.loginService.viewError(error.status);

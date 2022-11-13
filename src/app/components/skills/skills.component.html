@@ -15,7 +15,10 @@
     <h3 class="text-xl font-semibold text-center mb-5">Lenguajes</h3>
 
     <div class="flex gap-5 flex-wrap justify-center">
-      <div *ngIf="skillsService.loadinglenguajes">
+      <div
+        class="w-full flex justify-center"
+        *ngIf="skillsService.loadinglenguajes"
+      >
         <app-loader></app-loader>
       </div>
 
@@ -74,7 +77,10 @@
     <h3 class="text-xl font-semibold text-center my-5">Frameworks</h3>
 
     <div class="flex gap-5 flex-wrap justify-center">
-      <div *ngIf="skillsService.loadingFrameworks">
+      <div
+        class="w-full flex justify-center"
+        *ngIf="skillsService.loadingFrameworks"
+      >
         <app-loader></app-loader>
       </div>
       <!-- mini card redonda con las Frameworks-->

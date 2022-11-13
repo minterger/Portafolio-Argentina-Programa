@@ -6,9 +6,13 @@
       {{ id ? "Editar Proyecto" : "Añadir Proyecto" }}
     </h2>
     <hr class="border-slate-800 mt-3 mb-2" />
+    <div class="bg-red-500/50 p-2 rounded-md" *ngIf="messageError">
+      {{ messageError }}
+    </div>
     <form action="" (ngSubmit)="addProject()">
       <label class="asd" for="">Nombre:</label>
       <input
+        required
         [(ngModel)]="project.name"
         class="block w-full bg-slate-800 text-white px-2 py-2 rounded-lg mb-2"
         type="text"
@@ -17,6 +21,7 @@
 
       <label class="" for="">Imagen Url:</label>
       <input
+        required
         [(ngModel)]="project.imgUrl"
         class="block w-full bg-slate-800 text-white px-2 py-2 rounded-lg mb-2"
         type="text"
@@ -25,6 +30,7 @@
 
       <label class="" for="">Descripcion:</label>
       <textarea
+        required
         [(ngModel)]="project.description"
         class="block w-full bg-slate-800 text-white px-2 py-2 rounded-lg mb-2"
         type="text"
@@ -34,6 +40,7 @@
 
       <label class="" for="">Link Github:</label>
       <input
+        required
         [(ngModel)]="project.linkGithub"
         class="block w-full bg-slate-800 text-white px-2 py-2 rounded-lg mb-2"
         type="text"
@@ -42,6 +49,7 @@
 
       <label class="" for="">Link a Proyecto:</label>
       <input
+        required
         [(ngModel)]="project.linkProject"
         class="block w-full bg-slate-800 text-white px-2 py-2 rounded-lg mb-2"
         type="text"
@@ -60,7 +68,7 @@
         <button class="px-4 py-2 bg-blue-800 rounded-lg mx-auto">Añadir</button>
       </form> -->
 
-      <p class="mb-1">
+      <!-- <p class="mb-1">
         <span
           *ngFor="let tecnologyItem of project.tecnologies; index as i"
           class="cursor-pointer hover:text-slate-400 no-underline hover:underline decoration-dashed underline-offset-4 transition-colors"
@@ -71,7 +79,7 @@
           ></i>
           {{ tecnologyItem.name }}
         </span>
-      </p>
+      </p> -->
       <div
         class="mt-4 mb-2 w-full flex justify-center"
         *ngIf="projectService.loading"

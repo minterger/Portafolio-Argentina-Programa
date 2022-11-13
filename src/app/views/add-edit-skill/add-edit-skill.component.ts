@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Skill } from 'src/app/interface/skill';
+import { AppService } from 'src/app/services/app.service';
 import { LoginService } from 'src/app/services/login.service';
 import { SkillsService } from 'src/app/services/skills.service';
 
@@ -13,7 +15,9 @@ export class AddEditSkillComponent implements OnInit {
 
   token: string | null = '';
 
-  skill: any = {
+  messageError = '';
+
+  skill: Skill = {
     name: '',
     imgUrl: '',
     type: '',
@@ -23,7 +27,8 @@ export class AddEditSkillComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public skillsService: SkillsService,
-    public loginService: LoginService
+    public loginService: LoginService,
+    private appService: AppService
   ) {
     route.params.subscribe((param) => {
       this.skill.type = param['type'];
@@ -40,6 +45,8 @@ export class AddEditSkillComponent implements OnInit {
           this.router.navigate(['']);
         },
         (error) => {
+          this.loginService.viewError(error.status);
+
           this.skillsService.loading = false;
           console.log(error);
         }
@@ -47,11 +54,13 @@ export class AddEditSkillComponent implements OnInit {
       return;
     }
     this.skillsService.addSkill(this.skill).subscribe(
-      (skill) => {
+      () => {
         this.skillsService.loading = false;
         this.router.navigate(['']);
       },
       (error) => {
+        this.loginService.viewError(error.status);
+
         this.skillsService.loading = false;
         console.log(error);
       }

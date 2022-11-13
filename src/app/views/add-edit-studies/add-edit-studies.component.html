@@ -6,10 +6,15 @@
       {{ id ? "Editar Estudio" : "Añadir Estudio" }}
     </h2>
     <hr class="border-slate-800 mt-3 mb-2" />
-    <form action="" (ngSubmit)="addStudie()">
+    <div class="bg-red-500/50 p-2 rounded-md" *ngIf="messageError">
+      {{ messageError }}
+    </div>
+
+    <form action="" (ngSubmit)="addStudy()">
       <label class="asd" for="">Lugar:</label>
       <input
-        [(ngModel)]="studie.name"
+        required
+        [(ngModel)]="study.name"
         class="block w-full bg-slate-800 text-white px-2 py-2 rounded-lg mb-2"
         type="text"
         name="name"
@@ -17,21 +22,24 @@
 
       <label class="" for="">Imagen Url:</label>
       <input
-        [(ngModel)]="studie.imgUrl"
+        required
+        [(ngModel)]="study.imgUrl"
         class="block w-full bg-slate-800 text-white px-2 py-2 rounded-lg mb-2"
         type="text"
         name="imgUrl"
       />
       <label class="" for="">Titulo:</label>
       <input
-        [(ngModel)]="studie.title"
+        required
+        [(ngModel)]="study.title"
         class="block w-full bg-slate-800 text-white px-2 py-2 rounded-lg mb-2"
         type="text"
         name="title"
       />
       <label class="" for="">Modalidad:</label>
       <input
-        [(ngModel)]="studie.modality"
+        required
+        [(ngModel)]="study.modality"
         class="block w-full bg-slate-800 text-white px-2 py-2 rounded-lg mb-2"
         type="text"
         name="modality"

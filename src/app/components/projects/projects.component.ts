@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Project } from 'src/app/class/project';
+import { Project } from 'src/app/interface/project';
 import { LoginService } from 'src/app/services/login.service';
 import { ProjectsService } from 'src/app/services/projects.service';
 
@@ -30,7 +30,7 @@ export class ProjectsComponent implements OnInit {
     );
   }
 
-  deleteProject(id: number) {
+  deleteProject(id?: number) {
     this.projectService.deleteProject(id).subscribe(
       () => {
         this.getListProjects(true);

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Skill } from '../class/skill';
+import { Skill } from '../interface/skill';
 import { LoginService } from './login.service';
 
 @Injectable({
@@ -51,7 +51,7 @@ export class SkillsService {
     return this.http.put<Skill>(this.BaseUrl + '/' + id, skill, Options);
   }
 
-  deleteSkill(id: number): Observable<[string, boolean]> {
+  deleteSkill(id?: number): Observable<[string, boolean]> {
     let Options = {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.loginService.token,

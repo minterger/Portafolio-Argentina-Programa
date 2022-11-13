@@ -16,7 +16,9 @@
       class="px-3 py-2 rounded-md bg-green-700"
       >Añadir Proyecto</a
     >
-    <div *ngIf="projectService.loading"><app-loader></app-loader></div>
+    <div class="w-full flex justify-center" *ngIf="projectService.loading">
+      <app-loader></app-loader>
+    </div>
     <div
       *ngFor="let project of projects"
       class="md:max-w-4xl items-center flex md:flex-row flex-col shadow-lg bg-slate-900 p-2 rounded-lg text-white"
