@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LoginService {
-  private BaseUrl = 'https://ap-portafolio-backend.herokuapp.com/auth';
+  private BaseUrl = 'https://backend-portafolio-8rhp.onrender.com/auth';
 
   token: string | null = '';
   loading: boolean = false;

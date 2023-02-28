@@ -8,7 +8,7 @@ import { LoginService } from './login.service';
   providedIn: 'root',
 })
 export class ProjectsService {
-  private BaseUrl = 'https://ap-portafolio-backend.herokuapp.com/project';
+  private BaseUrl = 'https://backend-portafolio-8rhp.onrender.com/project';
 
   loading: boolean = false;
 
