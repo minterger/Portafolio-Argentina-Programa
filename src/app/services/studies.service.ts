@@ -8,7 +8,7 @@ import { LoginService } from './login.service';
   providedIn: 'root',
 })
 export class StudiesService {
-  private BaseUrl = 'https://backend-portafolio-8rhp.onrender.com/study';
+  private BaseUrl = 'https://backend.trinitymc.online/study';
 
   loading: boolean = false;
 
